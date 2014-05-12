@@ -78,9 +78,25 @@ nav {
   }
 }
 
-.artist, .album, .song {
+.artist, .album, {
   td {
     width: 50%;
+    padding: 1em 0;
+    .photo {
+      width: 20%;
+      height: auto;
+      vertical-align: middle;
+      margin: 0 0 0 2em;
+    }
+    td:nth-child(even) {
+      text-align: center;
+    }
+  }
+}
+
+.song {
+  td {
+    width: 20%;
     padding: 1em 0;
     .photo {
       width: 20%;

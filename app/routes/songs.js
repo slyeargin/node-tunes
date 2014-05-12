@@ -12,7 +12,7 @@ var _       = require('lodash');
 exports.index = (req, res)=>{
   artists.find().toArray((e, artsts)=>{
     albums.find().toArray((e, albms)=>{
-      songs.find().toArray((e, sngs)=>{
+      songs.find(req.query).toArray((e, sngs)=>{
 
         sngs = sngs.map(s=>{
           var al = _(albms).find(a=>a._id.toString() === s.albumId.toString());
@@ -54,8 +54,6 @@ exports.create = (req, res)=>{
     if(!fs.existsSync(albDir)){fs.mkdirSync(albDir);}
     fs.renameSync(oldPathAbs, newPathAbs);
 
-    // genreList.update();
-
     var song      = {};
     song.name     = name;
     song.genres   = genres;
@@ -80,7 +78,7 @@ exports.filter = (req, res)=>{
           s.artist = ar;
           return s;
         });
-        res.render('songs/index', {artists: artsts, albums: albms, genres: listGenres, songs: sngs, title: 'Filter by genre'});
+        res.render('songs/index', {artists: artsts, albums: albms, songs: sngs, title: 'Filter by genre'});
 
       });
     });

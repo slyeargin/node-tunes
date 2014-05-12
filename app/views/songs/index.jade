@@ -35,13 +35,17 @@ block content
       button Add
 
   table#songs
+    thead
+      th Artist
+      th Album
+      th Song
+      th Audio
+      th Genre
+    tbody
       each song in songs
         tr.song
+          td #{song.artist.name}
+          td #{song.album.name}
           td #{song.name}
-          td
-            audio(src="#{song.file}", controls=true)
-
-  //- #genres
-  //-   ul
-  //-     each genre in genres
-  //-       li: a(href='#') yo
+          td: audio(src="#{song.file}", controls=true)
+          td!= song.genres.map(function(g){return '<a href=/songs?genres='+g+'>'+g+'</a>'})
