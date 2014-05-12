@@ -1,0 +1,16 @@
+extends ../shared/template
+
+block content
+  h1 Artist List View
+
+  #meta
+    img(src='/img/artists/#{songs[0].artist.photo}', class='metaPhoto')
+    .albumName #{songs[0].artist.name}
+
+  #songs
+    table
+      each song in songs
+        tr.song
+          td.songName #{song.name}
+          td.audio
+            audio(src="#{song.file}", controls=true)

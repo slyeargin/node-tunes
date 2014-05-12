@@ -1,0 +1,16 @@
+extends ../shared/template
+
+block content
+  h1 Album List
+
+  #form
+    form(METHOD='POST', action='/albums', enctype='multipart/form-data')
+      input(type='text', name='name', placeholder='Album Name', autofocus=true)
+      input(type='file', name='cover')
+      button Add Album
+
+  #albums
+    each album in albums
+      .album
+        a(href='/albums/#{album._id}') #{album.name}
+        img(src='/img/albums/#{album.cover}', class='photo')
