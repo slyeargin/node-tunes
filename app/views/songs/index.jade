@@ -3,22 +3,38 @@ extends ../shared/template
 block content
   h1 Song List
 
-  #form
+  #form.songform
+    h2 Add A Song
     form(method='POST', action='/songs', enctype='multipart/form-data')
-      input(type='text', name='name', placeholder='Song name', autofocus=true)
-      select(name='artistId')
-        each artist in artists
-          option(value=artist._id) #{artist.name}
-      select(name='albumId')
-        each album in albums
-          option(value=album._id) #{album.name}
-      input(type='text', name='genres', placeholder='Genres, separated by commas')
-      input(type='file', name='file')
-
+      table
+        tbody
+          tr
+            td Song name:
+            td
+              input(type='text', name='name', placeholder='Song name', autofocus=true)
+          tr
+            td Artist:
+            td
+              select(name='artistId')
+                each artist in artists
+                  option(value=artist._id) #{artist.name}
+          tr
+            td Album:
+            td
+              select(name='albumId')
+                each album in albums
+                  option(value=album._id) #{album.name}
+          tr
+            td Genres:
+            td
+              input(type='text', name='genres', placeholder='Genres, separated by commas')
+          tr
+            td Upload song:
+            td
+              input(type='file', name='file')
       button Add
 
-  #songs
-    table
+  table#songs
       each song in songs
         tr.song
           td #{song.name}

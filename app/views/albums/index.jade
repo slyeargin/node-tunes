@@ -4,13 +4,17 @@ block content
   h1 Album List
 
   #form
+    h2 Add An Album
     form(METHOD='POST', action='/albums', enctype='multipart/form-data')
       input(type='text', name='name', placeholder='Album Name', autofocus=true)
       input(type='file', name='cover')
       button Add Album
 
-  #albums
-    each album in albums
-      .album
-        a(href='/albums/#{album._id}') #{album.name}
-        img(src='/img/albums/#{album.cover}', class='photo')
+  table#albums
+    tbody
+      each album in albums
+        tr.album
+          td
+            a(href='/albums/#{album._id}') #{album.name}
+          td
+            img(src='/img/albums/#{album.cover}', class='photo')

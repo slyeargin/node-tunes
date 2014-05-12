@@ -10,7 +10,7 @@ var _ = require('lodash');
 
 exports.index = (req, res)=>{
   artists.find().toArray((e,r)=>{
-    res.render('artists/index', {artists: r, title: 'Artist List'});
+    res.render('artists/index', {artists: r, title: '| Artist List'});
   });
 };
 
@@ -50,7 +50,7 @@ exports.show = (req, res)=>{
           s.artist = ar;
           return s;
         });
-        res.render('artists/show', {songs: sngs, title: 'Show Artist List'});
+        res.render('artists/show', {songs: sngs, title: '| Show Artist List'});
       });
     });
   });

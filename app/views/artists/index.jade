@@ -4,13 +4,17 @@ block content
   h1 Artist List
 
   #form
+    h2 Add An Artist
     form(METHOD='POST', action='/artists', enctype='multipart/form-data')
       input(type='text', name='name', placeholder='Artist Name', autofocus=true)
       input(type='file', name='photo')
       button Add Album
 
-  #artists
-    each artist in artists
-      .artist
-        a(href='/artists/#{artist._id}') #{artist.name}
-        img(src='/img/artists/#{artist.photo}', class='photo')
+  table#artists
+    tbody
+      each artist in artists
+        tr.artist
+          td
+            a(href='/artists/#{artist._id}') #{artist.name}
+          td
+            img(src='/img/artists/#{artist.photo}', class='photo')

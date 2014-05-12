@@ -12,7 +12,7 @@ var _ = require('lodash');
 
 exports.index = (req, res)=>{
   albums.find().toArray((e,r)=>{
-    res.render('albums/index', {albums: r, title: 'Album List'});
+    res.render('albums/index', {albums: r, title: '| Album List'});
   });
 };
 
@@ -52,7 +52,7 @@ exports.show = (req, res)=>{
           s.artist = ar;
           return s;
         });
-        res.render('albums/show', {songs: sngs, title: 'Show Album List'});
+        res.render('albums/show', {songs: sngs, title: '| Show Album List'});
       });
     });
   });

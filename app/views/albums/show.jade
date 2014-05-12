@@ -1,16 +1,14 @@
 extends ../shared/template
 
 block content
-  h1 Album List View
+  h1 #{songs[0].album.name}
 
   #meta
     img(src='/img/albums/#{songs[0].album.cover}', class='metaPhoto')
-    .albumName #{songs[0].album.name}
 
-  #songs
-    table
-      each song in songs
-        tr.song
-          td.songName #{song.name}
-          td.audio
-            audio(src="#{song.file}", controls=true)
+  table#songs
+    each song in songs
+      tr.song
+        td.songName #{song.name}
+        td.audio
+          audio(src="#{song.file}", controls=true)
